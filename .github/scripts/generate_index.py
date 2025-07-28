@@ -2,7 +2,7 @@ import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 TMP_REVIEW = ROOT / "_tmp-review"
-INDEX_FILES = [ROOT / "index.md", ROOT / "tmp-review/index.md"]
+INDEX_FILES = [ROOT / "index.md", ROOT / "index.html"]
 
 header = """---
 title: 리류 모음
@@ -24,4 +24,9 @@ content = header + "\n".join(items) + "\n" + footer
 
 for index in INDEX_FILES:
     index.parent.mkdir(parents=True, exist_ok=True)
-    index.write_text(content, encoding='utf-8')
+    if index.suffix == '.html':
+        # Strip Jekyll front matter for the HTML copy
+        stripped = content.split("---", 2)[2]
+        index.write_text(stripped.lstrip(), encoding='utf-8')
+    else:
+        index.write_text(content, encoding='utf-8')
