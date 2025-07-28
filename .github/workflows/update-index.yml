@@ -5,6 +5,9 @@ on:
     paths:
       - '_tmp-review/**'
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
