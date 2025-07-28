@@ -1,0 +1,24 @@
+name: Update Index
+
+on:
+  push:
+    paths:
+      - '_tmp-review/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Generate index
+        run: python .github/scripts/generate_index.py
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Update index.md'
+          branch: ${{ github.ref }}
