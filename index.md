@@ -25,5 +25,10 @@ layout: default
     <li><a href="{{ '/tmp-review/post1-2/스크린샷 2025-07-28 130019.png' | relative_url }}">스크린샷 2025-07-28 130019.png</a></li>
     <li><a href="{{ '/tmp-review/post1-2/스크린샷 2025-07-28 131734.png' | relative_url }}">스크린샷 2025-07-28 131734.png</a></li>
     <li><a href="{{ '/tmp-review/post1-2/스크린샷 2025-07-28 131749.png' | relative_url }}">스크린샷 2025-07-28 131749.png</a></li>
+    <li><a href="{{ '/tmp-review/post1-2/스크린샷 2025-07-28 184450.png' | relative_url }}">스크린샷 2025-07-28 184450.png</a></li>
+    <li><a href="{{ '/tmp-review/post1-2/스크린샷 2025-07-28 190302.png' | relative_url }}">스크린샷 2025-07-28 190302.png</a></li>
+    <li><a href="{{ '/tmp-review/post1-2/스크린샷 2025-07-28 190901.png' | relative_url }}">스크린샷 2025-07-28 190901.png</a></li>
+    <li><a href="{{ '/tmp-review/post1-2/스크린샷 2025-07-28 191222.png' | relative_url }}">스크린샷 2025-07-28 191222.png</a></li>
+    <li><a href="{{ '/tmp-review/post1-2/스크린샷 2025-07-28 195311.png' | relative_url }}">스크린샷 2025-07-28 195311.png</a></li>
     </ul></li>
 </ul>
