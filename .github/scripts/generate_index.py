@@ -17,7 +17,7 @@ items = []
 for path in sorted(TMP_REVIEW.rglob('*')):
     if path.is_file():
         rel = path.relative_to(TMP_REVIEW)
-        url = "{{ '/tmp-review/%s' | relative_url }}" % rel.as_posix()
+        url = "{{ '/_tmp-review/%s' | relative_url }}" % rel.as_posix()
         items.append(f"  <li><a href=\"{url}\">{rel.name}</a></li>")
 
 content = header + "\n".join(items) + "\n" + footer
