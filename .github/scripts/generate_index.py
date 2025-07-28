@@ -2,7 +2,8 @@ import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 TMP_REVIEW = ROOT / "_tmp-review"
-INDEX_FILES = [ROOT / "index.md", ROOT / "index.html"]
+INDEX_MD = ROOT / "index.md"
+INDEX_HTML = ROOT / "index.html"
 
 header = """---
 title: 리류 모음
@@ -13,20 +14,19 @@ layout: default
 """
 footer = "</ul>\n"
 
-items = []
+items_md = []
+items_html = []
 for path in sorted(TMP_REVIEW.rglob('*')):
     if path.is_file():
         rel = path.relative_to(TMP_REVIEW)
-        url = "{{ '/_tmp-review/%s' | relative_url }}" % rel.as_posix()
-        items.append(f"  <li><a href=\"{url}\">{rel.name}</a></li>")
+        url_md = "{{ '/tmp-review/%s' | relative_url }}" % rel.as_posix()
+        url_html = f"tmp-review/{rel.as_posix()}"
+        items_md.append(f"  <li><a href=\"{url_md}\">{rel.name}</a></li>")
+        items_html.append(f"  <li><a href=\"{url_html}\">{rel.name}</a></li>")
 
-content = header + "\n".join(items) + "\n" + footer
+content_md = header + "\n".join(items_md) + "\n" + footer
+content_html = "<ul>\n" + "\n".join(items_html) + "\n</ul>\n"
 
-for index in INDEX_FILES:
+for index, content in [(INDEX_MD, content_md), (INDEX_HTML, content_html)]:
     index.parent.mkdir(parents=True, exist_ok=True)
-    if index.suffix == '.html':
-        # Strip Jekyll front matter for the HTML copy
-        stripped = content.split("---", 2)[2]
-        index.write_text(stripped.lstrip(), encoding='utf-8')
-    else:
-        index.write_text(content, encoding='utf-8')
+    index.write_text(content, encoding='utf-8')
